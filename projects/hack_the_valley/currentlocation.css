@@ -1,0 +1,22 @@
+.map-responsive {
+    overflow: hidden;
+    padding-bottom: 50%;
+    position: relative;
+    height: 100vh;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.button {
+    background-color: #ffffff;
+    font-size: 16px;
+    border: 4px;
+    border-color: #000000;
+    color: #000000;
+    padding: 50px 100px;
+}
+

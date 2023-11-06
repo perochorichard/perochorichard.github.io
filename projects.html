@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Projects</title>
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--popper-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/popper.min.js"></script>
+    <!--font-awesome-->
+    <script src="https://kit.fontawesome.com/95c8f7aee3.js"></script>
+    <!--local-->
+    <link rel="stylesheet" href="./main.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+        <a class="navbar-brand" href="./index.html">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="./assets/resume_web.pdf">resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container text-white">
+        <h1 class="display-2 text-center m-5">projects</h1>
+        <div class="d-flex flex-row flex-wrap justify-content-around">
+            <div class="card zoom bg-info text-white p-2 m-3" style="width: 400px;">
+                <img class="card-img-top" src="./assets/algorithms_thumbnail.PNG" alt="Sorted Algorithm">
+                <div class="card-body">
+                    <h4 class="card-title">Algorithm Visualizer</h4>
+                    <p class="card-text">
+                        Sorting algorithms were always difficult for me to understand. I created this tool to
+                         to help me better grasp their nature by visualing the process. This project definitely gave me more 
+                         confidence with understanding algorithms.
+                    </p>
+                </div>
+                <a href="./projects/algorithms/index.html" class="stretched-link"></a>
+            </div>
+            <div class="card zoom bg-info text-white p-2 m-3" style="width: 400px;">
+                <img class="card-img-top" src="./assets/game_thumbnail.PNG" alt="Space Shooter">
+                <div class="card-body">
+                    <h4 class="card-title">Space Shooter</h4>
+                    <p class="card-text">
+                        I've always had a fascination with game development, so I set out to create a small game demo that could eventually become a standalone web-supported project.
+                        The world of game engines offered several choices, including Unreal, Godot, LibGDX, and Solar2D.
+                        In the end, I chose Unity because of its well-documented features and the abundance of online learning resources.
+                        My initial project idea was a simple space shooter, meant to help me get understand Unity's game development workflow.
+                        However, it quickly became apparent that game development is much more complex than I initially thought.
+                        Developing on Unity introduced me to new concepts like component-based architecture, where game objects are made up of different components that work together.
+                        I also learned about event-driven programming, which is central to Unity, as it relies heavily on events and event handlers to manage game events,
+                        user input, and physics. I also discovered Unity Web which is a deployment option that compiles the game to WebGL. With this, I was able to
+                        embed the game into this website without any other installations or plugins. Navigating this different workflow was challenging, but I found an abundance of online resources that helped me throughout this learning journey.
+                    </p>
+                </div>
+                <a href="./projects/spaceshootergame_webgl/game.html" class="stretched-link"></a>
+            </div>
+            <div class="card zoom bg-info text-white p-2 m-3" style="width: 400px;">
+                <img class="card-img-top" src="./assets/monkey_thumbnail.PNG" alt="Monkeys">
+                <div class="card-body">
+                    <h4 class="card-title">Golden snub-nosed monkey</h4>
+                    <p class="card-text">
+                        
+                        After studying endangered primates in my anthropology class, I decided to create a webpage dedicated to one special species:
+                        the golden snub-nosed monkey. This project enhanced my CSS skills and improved the presentation of websites. Specifically, I learned about parallax scrolling and bootstrap 4.
+                        I also learned how to use the Sheridan College domain to host webpages.
+                        Did you know these monkeys are known to engage in snowball fights? They form and throw snowballs just like humans.
+                    </p>
+                </div>
+                <a href="http://perocho.dev.fast.sheridanc.on.ca/projects/PrimateConservationProject/index.html" class="stretched-link"></a>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</body>
+
+</html>

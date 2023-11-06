@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Unity WebGL Player | Space Shooter Prototype</title>
+  <link rel="shortcut icon" href="TemplateData/favicon.ico">
+  <link rel="stylesheet" href="TemplateData/style.css">
+  <script src="TemplateData/UnityProgress.js"></script>
+  <script src="Build/UnityLoader.js"></script>
+  <script>
+    var unityInstance = UnityLoader.instantiate("unityContainer", "Build/WebGL_build.json", { onProgress: UnityProgress });
+  </script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/95c8f7aee3.js"></script>
+  <link rel="stylesheet" href="../../main.css">
+  
+
+  
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <a class="navbar-brand" href="../../index.html">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="../../projects.html">projects</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="webgl-content">
+    <div id="unityContainer" style="width: 960px; height: 600px"></div>
+    <div class="footer">
+      <div class="webgl-logo"></div>
+      <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+      <div class="title">Space Shooter Prototype</div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Finding Shelter</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--popper-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/popper.min.js"></script>
+    <!--font-awesome-->
+    <script src="https://kit.fontawesome.com/95c8f7aee3.js"></script>
+    <style>
+        .map-responsive {
+            overflow: hidden;
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #myTable {
+            height: 100vh;
+            overflow: auto;
+        }
+
+        .col-3{
+            background-color: #ffa13f;
+            height:100%;
+            width:100%;
+            z-index: 1;
+        }
+
+        .myButton {
+            border-radius: 0% !important;
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .myMap {
+            padding: 0 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3 text-center">
+                <div class="overflow-auto text-center myDiv mt-2 pt-2" id="myTable">
+                    <button class="btn btn-outline-secondary btn-lg btn-block myButton" id="search">Search</button>
+                </div>
+            </div>
+            <div class="col-9 myMap">
+                <div class="map-responsive" id="map"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var map, infoWindow, services;
+        var currentLocation;
+        var directionsService;
+        var directionsDisplay;
+        var service;
+        function initMap() {
+            directionsService = new google.maps.DirectionsService();
+            directionsDisplay = new google.maps.DirectionsRenderer();
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 15,
+                styles: [
+                    {
+                        "stylers": [
+                            {
+                                "color": "#c8c8c8"
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#ebe3cd"
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#ece8e6"
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#644a4a"
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "color": "#e1e1e1"
+                            },
+                            {
+                                "weight": 1
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                            {
+                                "color": "#c9b2a6"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative.land_parcel",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                            {
+                                "color": "#dcd2be"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative.land_parcel",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#ae9e90"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape.natural",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#dfd2ae"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#dfd2ae"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#93817c"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi.park",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#a5b076"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi.park",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#447530"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#f5f1e6"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#d8d8d8"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#fdfcf8"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#f8c967"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                            {
+                                "color": "#e9bc62"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway.controlled_access",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#c8af82"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway.controlled_access",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#e7b032"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway.controlled_access",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                            {
+                                "color": "#eba92e"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.local",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#806b63"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.line",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#dfd2ae"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.line",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#8f7d77"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.line",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "color": "#ebe3cd"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.station",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#dfd2ae"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#a8bbdb"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#92998d"
+                            }
+                        ]
+                    }
+                ]
+            });
+            directionsDisplay.setMap(map);
+
+            infoWindow = new google.maps.InfoWindow({
+                content: 'You Are Here'
+            });
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    currentLocation = pos;
+
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: pos,
+                        icon: 'currentPointer.png'
+                    });
+                    map.setCenter(pos);
+                    infoWindow.open(map, marker);
+                    marker.addListener('click', function () {
+                        infoWindow.setContent('you are here');
+                        infoWindow.open(map, marker);
+                    });
+                    var button = document.getElementById('search')
+                    button.addEventListener('click', searchShelters);
+                }, function () {
+                    handleLocationError(true, infoWindow, map.getCenter());
+                });
+            } else {
+                handleLocationError(false, infoWindow, map.getCenter());
+            }
+        }
+
+        function calculateRoute(src, dest) {
+            var request = {
+                origin: src,
+                destination: dest,
+                travelMode: 'WALKING'
+            }
+
+            directionsService.route(request, function (result, status) {
+                if (status == 'OK') {
+                    directionsDisplay.setDirections(result)
+                }
+            })
+        }
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+            infoWindow.setPosition(pos);
+            infoWindow.setContent(browserHasGeolocation ?
+                'Error: The Geolocation service failed.' :
+                'Error: Your browser doesn\'t support geolocation.');
+            infoWindow.open(map);
+        }
+
+        var searchShelters = function () {
+            this.style.display = "none";
+            var request = {
+                location: currentLocation,
+                radius: '25000',
+                name: ['homeless shelter'],
+                vicinity: ['default'],
+                icon: ['default'],
+                fields: ['geometry'],
+                beds: [1],
+            };
+
+            service = new google.maps.places.PlacesService(map);
+            service.nearbySearch(request, callback);
+            function callback(results, status) {
+                var shelterArray = [];
+                console.log(results)
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+                    for (var i = 0; i < results.length; i++) {
+                        let name = results[i].name;
+                        let pos = results[i].geometry.location;
+                        results[i].beds = (500 - (Math.floor(Math.random() * (500 - 490)) + 490));
+                        let listElement = $('<button/>').html(name).on('click', function () {
+                            map.setCenter(pos);
+                        });
+                        listElement.addClass("btn btn-outline-secondary btn-block myButton");
+                        $("#myTable").append(listElement);
+                        createMarker(results[i]);
+                    }
+                }
+            }
+
+            function createMarker(place) {
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: place.geometry.location,
+                    icon: 'vacantMarker.png'
+                });
+
+                marker.addListener('click', function () {
+                    infoWindow.setContent("<img class='mr-2 mb-2' style='float:left;width: 30%;' src='https://upload.wikimedia.org/wikipedia/commons/7/71/Pictograms-nps-lodging.png'>"
+                        + "<p>" + place.name + "<br />" + place.vicinity +
+                        "</p>" + place.beds + " Beds Available" + "<br />" + "<p>" +
+                        
+                        "<button class='btn btn-outline-dark walking btn-block'><i class='fas fa-walking'></i> Get Directions <i class='fas fa-walking'></i></button>" 
+                    
+                        );
+
+                    var src = new google.maps.LatLng(currentLocation);
+
+                    $('.walking').on('click', function () {
+                        service = new google.maps.DistanceMatrixService();
+                        var dest = new google.maps.LatLng(marker.position.lat(), marker.position.lng());
+                            calculateRoute(src, dest);
+
+                            service.getDistanceMatrix(
+                            {
+                                origins: [src],
+                                destinations: [dest],
+                                travelMode: 'WALKING',
+                                avoidHighways: true,
+                                avoidTolls: false,
+                            }, callback);
+                            function callback(response, status) {
+                                infoWindow.setContent(infoWindow.getContent()+"<br />" + "Distance: " + response.rows[0].elements[0].distance.text
+                                + "<p>" + "Approximate Time: " + response.rows[0].elements[0].duration.text);
+                                directionsDisplay.setMap(map);
+                                directionsDisplay.setOptions( { suppressMarkers: true } );
+                            }
+                    })
+                    infoWindow.open(map, marker);
+                });
+            }
+        }
+
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjy0vHyQQC3ijbPtq4fHdX7WxpzBBxDmY&callback=initMap&libraries=places">
+        </script>
+</body>
+
+</html>

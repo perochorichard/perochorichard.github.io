@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Index</title>
+
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--popper-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/popper.min.js"></script>
+    <!--font-awesome-->
+    <script src="https://kit.fontawesome.com/95c8f7aee3.js"></script>
+    <!--local-->
+    <link rel="stylesheet" href="../../main.css">
+    <script type="module" src="main.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+        <a class="navbar-brand" href="../../index.html">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="../../projects.html">projects</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid pt-5">
+        <div class="row">
+            <div class="col-lg-3 col-xl-2 rounded m-3 p-4 bg-dark">
+                <table class="table table-borderless table-sm h-100">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="lead text-white text-center mb-3">Control Panel</div>
+                                <div class="form-group">
+                                    <label for="algo-type" class="text-white">algorithm</label>
+                                    <select id="algo-type" class="custom-select bg-info text-white">
+                                        <option selected>choose an algorithm...</option>
+                                        <option value="0">bubble sort</option>
+                                        <option value="1">quick sort</option>
+                                        <option value="2">insertion sort</option>
+                                        <option value="3">merge sort</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="array-range" class="text-white p-0 m-1">data size</label>
+                                    <input type="range" min='50' max='1000' value='5'
+                                        class="custom-range bg-info p-3 rounded" id="array-range">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="align-bottom">
+                                <div id="warn" class="alert alert-warning" style="visibility: hidden;">
+                                    select an algorithm
+                                </div>
+                                <a id="stop" href="." class="btn btn-info btn-block" hidden='true'>stop</a>
+                                <button id="shuffle" class="btn btn-info btn-block">shuffle array</button>
+                                <button id="sort" class="btn btn-info btn-block">sort</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+            <div class="col rounded m-3 p-4 bg-dark">
+                <table class="table table-sm table-borderless">
+                    <tbody id="tablebody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

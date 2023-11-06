@@ -1,0 +1,56 @@
+@font-face {
+    font-family: boldPixel;
+    src: url(assets/Fipps-Regular.otf);
+}
+
+@font-face {
+    font-family: pixelFlat;
+    src: url(assets/VCR_OSD_MONO_1.001.ttf);
+}
+
+body {
+    background-color: #545454;
+}
+
+.bg-grey {
+    background-color: #545454;
+}
+
+.bg-main {
+    background-color: #bacddf;
+}
+
+.bg-highlighted {
+    background-color: #4ef56a;
+}
+
+.bg-darkgrey {
+    background-color: #474646;
+}
+
+.custom-range::-webkit-slider-thumb {
+    background: #343A40;
+}
+
+.custom-range::-moz-range-thumb {
+    background: #343A40;
+}
+
+.custom-range::-ms-thumb {
+    background: #343A40;
+}
+
+.zoom:hover {
+    transition: transform .2s;
+    transform: scale(1.03);
+}
+
+.linkcon {
+    font-size: 150px;
+    color: white;
+}
+
+.linkcon:hover {
+    color: #17A2B8;
+    transform: scale(1.05);
+}
