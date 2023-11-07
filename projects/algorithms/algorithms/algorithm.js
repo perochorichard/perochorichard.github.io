@@ -1,4 +1,5 @@
-import sleep from '../Async.js';
+import sleep from '../async.js';
+
 export default class Algorithm {
     constructor(arr) {
         this.arr = arr;

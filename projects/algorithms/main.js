@@ -1,7 +1,7 @@
-import BubbleSort from './Algorithms/BubbleSort.js';
-import QuickSort from './Algorithms/QuickSort.js';
-import InsertionSort from './Algorithms/InsertionSort.js';
-import MergeSort from './Algorithms/MergeSort.js';
+import BubbleSort from '/algorithms/bubblesort.js';
+import QuickSort from '/algorithms/quicksort.js';
+import InsertionSort from '/algorithms/insertionsort.js';
+import MergeSort from '/algorithms/mergesort.js';
 
 let ALGORITHMS = [BubbleSort, QuickSort, InsertionSort, MergeSort];
 let arr = [];

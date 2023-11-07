@@ -1,5 +1,5 @@
-import Algorithm from './Algorithm.js';
-import sleep from '../Async.js';
+import Algorithm from 'algorithm.js';
+import sleep from '../async.js';
 
 export default class MergeSort extends Algorithm {
     constructor(arr) {
