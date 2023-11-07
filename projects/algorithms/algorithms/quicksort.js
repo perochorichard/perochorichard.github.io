@@ -1,5 +1,5 @@
 import Algorithm from 'algorithm.js';
-import sleep from '../async.js';
+import sleep from '/projects/algorithms/async.js';
 
 export default class QuickSort extends Algorithm {
     constructor(arr) {

@@ -1,5 +1,5 @@
-import Algorithm from './Algorithm.js';
-import sleep from '../Async.js';
+import Algorithm from 'algorithm.js';
+import sleep from '/projects/algorithms/async.js';
 
 export default class BubbleSort extends Algorithm {
     constructor(arr) {
