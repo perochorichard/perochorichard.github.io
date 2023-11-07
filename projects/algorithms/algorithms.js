@@ -1,4 +1,4 @@
-import sleep from 'async.js';
+import sleep from './async.js';
 
 let default_color = '#bacddf';
 let highlight_color = '#17A2B8';
