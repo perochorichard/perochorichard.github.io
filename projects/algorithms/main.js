@@ -2,8 +2,9 @@ import BubbleSort from './algorithms/bubblesort.js';
 import QuickSort from './algorithms/quicksort.js';
 import InsertionSort from './algorithms/insertionsort.js';
 import MergeSort from './algorithms/mergesort.js';
+import BogoSort from './algorithms/bogosort.js';
 
-let ALGORITHMS = [BubbleSort, QuickSort, InsertionSort, MergeSort];
+let ALGORITHMS = [BubbleSort, QuickSort, InsertionSort, MergeSort, BogoSort];
 let arr = [];
 
 window.onload = function () {
@@ -34,6 +35,9 @@ window.onload = function () {
         let l = parseInt($(this).val(), 10);
         shuffle(l);
     });
+
+    let maxHeight = 0.5 * window.innerHeight;
+    $('#tablebody').css('max-height', maxHeight + 'px');
 }
 
 function generateDataPoints(arr) {

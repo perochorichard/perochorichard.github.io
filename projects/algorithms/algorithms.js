@@ -60,4 +60,4 @@ function mergeSort(arr, low, high) {
     }
 }
 
-export default { bubbleSort, quickSort, completeSort, mergeSort };
+export default { bubbleSort, quickSort, completeSort, mergeSort, bogoSort };
